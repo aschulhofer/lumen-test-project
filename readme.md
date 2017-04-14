@@ -1,7 +1,14 @@
 # Lumen test project
 
+run `composer install`
+run `php artisan migrate:install`
+run `php artisan migrate`
 
 
+
+
+__Not for setup__
+`php artisan make:migration create_users_table --create=users`
 
 
 
