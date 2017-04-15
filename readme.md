@@ -8,7 +8,19 @@ run `php artisan migrate`
 
 
 __Not for setup__
+
+#### Create migration
 `php artisan make:migration create_users_table --create=users`
+
+#### Create seeder
+`php artisan make:seeder UsersTableSeeder`
+
+Do not rename created seeder. If you have to rename the seeder, create new one with correct name and copy the content of the old one, otherwise
+`db:seed` is not finding the seeder class.
+
+#### Run seeder
+`php artisan db:seed`
+`php artisan db:seed --class=UsersTableSeeder`
 
 
 

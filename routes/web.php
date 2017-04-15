@@ -21,3 +21,5 @@ $app->get('woodstick/sayhello', 'WoodstickController@sayHello');
 $app->get('woodstick/jwttest', 'WoodstickController@jwtTest');
 
 $app->get('woodstick/jwttestlib', 'WoodstickController@jwtTestLib');
+
+$app->get('woodstick/hash/{valueToHash}', 'WoodstickController@testHash');

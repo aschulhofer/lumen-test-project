@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dee80b4b76dcb3e4218e388917103e7f",
+    "content-hash": "5cc3ff643d27cc97e273fc5e83a5079d",
     "packages": [
         {
             "name": "aschulhofer/woodstick-jwt",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aschulhofer/woodstick-jwt.git",
-                "reference": "bad9de0f1134989e32148ac89b14ca2403c7c5c8"
+                "reference": "b861d99e917c957607dbfd65392c411fbea51380"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aschulhofer/woodstick-jwt/zipball/bad9de0f1134989e32148ac89b14ca2403c7c5c8",
-                "reference": "bad9de0f1134989e32148ac89b14ca2403c7c5c8",
+                "url": "https://api.github.com/repos/aschulhofer/woodstick-jwt/zipball/b861d99e917c957607dbfd65392c411fbea51380",
+                "reference": "b861d99e917c957607dbfd65392c411fbea51380",
                 "shasum": ""
             },
             "require": {
@@ -36,10 +36,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/aschulhofer/woodstick-jwt/tree/0.0.1",
+                "source": "https://github.com/aschulhofer/woodstick-jwt/tree/0.0.2",
                 "issues": "https://github.com/aschulhofer/woodstick-jwt/issues"
             },
-            "time": "2017-04-10T21:09:07+00:00"
+            "time": "2017-04-14T10:01:11+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -2426,16 +2426,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
                 "shasum": ""
             },
             "require": {
@@ -2464,7 +2464,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-01-26T22:05:40+00:00"
+            "time": "2017-04-12T18:52:22+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
