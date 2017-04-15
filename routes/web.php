@@ -15,6 +15,16 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+$app->group(['prefix' => 'api'], function() use ($app) {
+    $app->post('login', 'LoginController@login');
+
+
+});
+
+$app->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($app) {
+    $app->get('tokenTest', 'WoodstickController@tokenTest');
+});
+
 
 $app->get('woodstick/sayhello', 'WoodstickController@sayHello');
 

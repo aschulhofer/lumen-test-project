@@ -6,6 +6,8 @@ use Woodstick\Hello\SayHello;
 use Woodstick\JWT\JWTTest;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Http\Request;
+
 class WoodstickController extends Controller
 {
     public function __construct() {
@@ -28,6 +30,14 @@ class WoodstickController extends Controller
             [
                 'value' => $valueToHash,
                 'hash' => Hash::make($valueToHash),
+            ]
+        );
+    }
+
+    public function tokenTest(Request $request) {
+        return response()->json(
+            [
+                'token' => $request->header('Authorization'),
             ]
         );
     }
