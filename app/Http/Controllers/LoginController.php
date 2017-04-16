@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\JWTAuth;
-
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -11,16 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
-    protected $jwtAuth;
-
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(JWTAuth $jwtAuth)
+    public function __construct()
     {
-        $this->jwtAuth = $jwtAuth;
+        
     }
 
     /**
@@ -32,12 +28,8 @@ class LoginController extends Controller
         $email = $request->input('email', 'default@default.de');
         $password = $request->input('password');
 
-
-        if(Auth::attempt(['email' => $email, 'password' => $password]))
-        {
-            $user = Auth::user();
-            $token = $this->jwtAuth->authenticateUser($user);
-
+        $token = Auth::attempt(['email' => $email, 'password' => $password]);
+        if($token) {
             return response()->json(
                 [
                     'success' => true,
@@ -46,8 +38,7 @@ class LoginController extends Controller
                 ]
             );
         }
-        else
-        {
+        else {
             return response()->json(['success' => false, 'email' => $email]);
         }
     }

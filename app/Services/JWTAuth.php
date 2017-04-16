@@ -105,9 +105,9 @@ class JWTAuth {
     
     /**
      *
-     * @param type $user
+     * @param \App\Data\Model\User $user
      *
-     * @return type
+     * @return \Woodstick\JWT\Token|null
      */
     public function authenticateUser($user) {
 
@@ -133,6 +133,16 @@ class JWTAuth {
         ]);
         
         return $token;
+    }
+    
+    /**
+     *
+     * @param \App\Data\Model\User $user
+     *
+     * @return \Woodstick\JWT\Token|null
+     */
+    public function newAuthenticationToken($user) {
+        return $this->authenticateUser($user);
     }
     
     /**

@@ -80,10 +80,7 @@ class JWTGuard implements GuardContract {
         $user = $this->provider->retrieveByCredentials($credentials);
 
         if ($this->hasValidCredentials($user, $credentials)) {
-
-            $this->login($user, $credentials);
-
-            return true;
+            return $this->login($user, $credentials);
         }
 
         return false;
@@ -102,14 +99,18 @@ class JWTGuard implements GuardContract {
     }
 
     /**
-     * Log a user into the application.
+     * Log a user into the application. Create access token for the user.
      *
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
      *
-     * @return void
+     * @return token
      */
     public function login(Authenticatable $user) {
+        $token = $this->jwtAuth->newAuthenticationToken($user);
+        
         $this->setUser($user);
+        
+        return $token;
     }
 
     /**
