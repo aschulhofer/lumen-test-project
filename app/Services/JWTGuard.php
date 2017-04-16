@@ -1,29 +1,28 @@
 <?php
+
 namespace App\Services;
 
-use Woodstick\JWT\JWTLib;
+use App\Services\RequestTrait;
 
-use Illuminate\Auth\GuardHelpers as GuardHelpersTrait;
+use Illuminate\Auth\GuardHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard as GuardContract;
-
 use Illuminate\Support\Facades\Log;
 
-class JWTGuard implements GuardContract
-{
-    use GuardHelpersTrait;
+class JWTGuard implements GuardContract {
 
+    use GuardHelpers, RequestTrait;
+    
     /**
-     * The request instance.
      *
-     * @var \Illuminate\Http\Request
+     * @var \App\Services\JWTAuth; 
      */
-    protected $request;
+    protected $jwtAuth;
 
-    public function __construct(UserProvider $provider, Request $request)
-    {
+    public function __construct(JWTAuth $jwtAuth, UserProvider $provider, Request $request) {
+        $this->jwtAuth = $jwtAuth;
         $this->provider = $provider;
         $this->request = $request;
     }
@@ -33,8 +32,24 @@ class JWTGuard implements GuardContract
      *
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
-    public function user()
-    {
+    public function user() {
+        
+        // If we've already retrieved the user for the current request we can just
+        // return it back immediately. We do not want to fetch the user data on
+        // every call to this method because that would be tremendously slow.
+        
+        if (! is_null($this->user)) {
+            return $this->user;
+        }
+        
+        $this->user = null;
+        
+        $tokenString = $this->jwtAuth->getToken();
+        if($this->jwtAuth->verifyToken($tokenString)) {
+            
+            $this->user = $this->jwtAuth->checkToken($tokenString);
+        }
+        
         return $this->user;
     }
 
@@ -45,8 +60,7 @@ class JWTGuard implements GuardContract
      *
      * @return bool
      */
-    public function validate(array $credentials = [])
-    {
+    public function validate(array $credentials = []) {
         $user = $this->provider->retrieveByCredentials($credentials);
 
         return $this->hasValidCredentials($user, $credentials);
@@ -60,8 +74,7 @@ class JWTGuard implements GuardContract
      *
      * @return mixed
      */
-    public function attempt(array $credentials = [])
-    {
+    public function attempt(array $credentials = []) {
         Log::debug('Attemp to authenticate');
 
         $user = $this->provider->retrieveByCredentials($credentials);
@@ -84,8 +97,7 @@ class JWTGuard implements GuardContract
      *
      * @return bool
      */
-    protected function hasValidCredentials($user, $credentials)
-    {
+    protected function hasValidCredentials($user, $credentials) {
         return !is_null($user) && $this->provider->validateCredentials($user, $credentials);
     }
 
@@ -96,8 +108,7 @@ class JWTGuard implements GuardContract
      *
      * @return void
      */
-    public function login(Authenticatable $user)
-    {
+    public function login(Authenticatable $user) {
         $this->setUser($user);
     }
 
@@ -106,8 +117,7 @@ class JWTGuard implements GuardContract
      *
      * @return void
      */
-    public function logout()
-    {
+    public function logout() {
         $this->user = null;
     }
 }

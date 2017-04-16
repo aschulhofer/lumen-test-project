@@ -24,6 +24,9 @@ Do not rename created seeder. If you have to rename the seeder, create new one w
 
 
 
+`php artisan make:migration create_jwttokens_table --create=jwttokens`
+
+
 # Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)

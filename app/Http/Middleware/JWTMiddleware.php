@@ -40,10 +40,11 @@ class JWTMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
+//        $token = $request->header('Authorization');
+//        $token = $this->jwtAuth->getToken();
 
-        $token = $request->header('Authorization');
-
-        if(!$this->jwtAuth->verifyToken($token)) {
+        if($this->auth->guard($guard)->guest()) {
+//        if(!$this->jwtAuth->verifyToken($token)) {
             return response('Unauthorized.', 401);
         }
 
