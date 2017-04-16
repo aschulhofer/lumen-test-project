@@ -15,13 +15,11 @@ class TokenProvider {
     use RequestTrait;
     
     /**
-     *
      * @var \App\Services\TokenSource 
      */
     protected $tokenSource;
     
     /**
-     *
      * @var string 
      */
     protected $token;

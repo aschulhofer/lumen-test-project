@@ -85,6 +85,7 @@ class JWTAuth {
      *  
      * @param string $token
      * 
+     * TODO: use Illuminate\Auth\Authenticatable
      * @return App\Data\Model\User|null
      */
     public function checkToken($token) {
@@ -98,13 +99,13 @@ class JWTAuth {
         
         $user = $tokenData->user;
         
-        Log::debug(sprintf('Found user "%s" for token "%s"', $user->email, $token));
+        Log::debug(sprintf('Found user "%s" for token "%s"', $user->getKey(), $token));
         
         return $user;
     }
     
     /**
-     *
+     * TODO: use Illuminate\Auth\Authenticatable
      * @param \App\Data\Model\User $user
      *
      * @return \Woodstick\JWT\Token|null
@@ -136,7 +137,7 @@ class JWTAuth {
     }
     
     /**
-     *
+     * TODO: use Illuminate\Auth\Authenticatable
      * @param \App\Data\Model\User $user
      *
      * @return \Woodstick\JWT\Token|null

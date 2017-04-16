@@ -9,7 +9,7 @@ use App\Data\Model\JWTToken;
  */
 class TokenStorage {
     
-    public function addTokenData($tokenData) {
+    public function addTokenData(array $tokenData) {
         JWTToken::create($tokenData);
     }
     
@@ -29,7 +29,7 @@ class TokenStorage {
      * 
      * @param string $token
      * 
-     * @return App\Data\Model\JWTToken
+     * @return \App\Services\Contracts\TokenData
      */
     public function getTokenData($token) {
         
@@ -41,6 +41,6 @@ class TokenStorage {
 //            return null;
 //        }
         
-        return $tokenData = JWTToken::where('token', $token)->first();
+        return JWTToken::where('token', $token)->first();
     }
 }

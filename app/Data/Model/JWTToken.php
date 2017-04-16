@@ -2,9 +2,10 @@
 
 namespace App\Data\Model;
 
+use App\Services\Contracts\TokenData;
 use Illuminate\Database\Eloquent\Model;
 
-class JWTToken extends Model
+class JWTToken extends Model implements TokenData
 {
     protected $table = 'jwttokens';
 
