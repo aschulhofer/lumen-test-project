@@ -23,6 +23,8 @@ $app->group(['prefix' => 'api'], function() use ($app) {
 
 $app->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($app) {
     $app->get('tokenTest', 'WoodstickController@tokenTest');
+    
+    $app->post('logout', 'LogoutController@logout');
 });
 
 

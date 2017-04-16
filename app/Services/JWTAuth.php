@@ -134,4 +134,18 @@ class JWTAuth {
         
         return $token;
     }
+    
+    /**
+     * Invalidates a token. If no value is given the token from the current 
+     * request gets invalidated.
+     * 
+     * @param string $token
+     */
+    public function invalidateToken($token = null) {
+        $tokenToInvalidate = $token ?: $this->getToken();
+        
+        $removedToken = $this->tokenStorage->removeTokenData($tokenToInvalidate);
+        
+        Log::debug(sprintf('Removed data for %s token', $removedToken));
+    }
 }

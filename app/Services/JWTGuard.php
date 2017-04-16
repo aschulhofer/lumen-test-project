@@ -118,6 +118,9 @@ class JWTGuard implements GuardContract {
      * @return void
      */
     public function logout() {
+        
+        $this->jwtAuth->invalidateToken();
+        
         $this->user = null;
     }
 }

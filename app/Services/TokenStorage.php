@@ -14,9 +14,20 @@ class TokenStorage {
     }
     
     /**
+     * Removed the stored data for the given token.
      * 
+     * @param string $token
      * 
-     * @param type $token
+     * @return int
+     */
+    public function removeTokenData($token) {
+        return JWTToken::where('token', $token)->delete();
+    }
+    
+    /**
+     * Get the stored data for the given token.
+     * 
+     * @param string $token
      * 
      * @return App\Data\Model\JWTToken
      */
