@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class WoodstickController extends Controller
 {
     public function __construct() {
@@ -35,9 +37,13 @@ class WoodstickController extends Controller
     }
 
     public function tokenTest(Request $request) {
+        
+        $user = Auth::user();
+        
         return response()->json(
             [
                 'token' => $request->header('Authorization'),
+                'you' => $user->toArray(),
             ]
         );
     }
