@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aschulhofer/woodstick-jwt",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aschulhofer/woodstick-jwt.git",
-                "reference": "b861d99e917c957607dbfd65392c411fbea51380"
+                "reference": "cba8caadb21f32df1c3975a2a06b9adba582e0f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aschulhofer/woodstick-jwt/zipball/b861d99e917c957607dbfd65392c411fbea51380",
-                "reference": "b861d99e917c957607dbfd65392c411fbea51380",
+                "url": "https://api.github.com/repos/aschulhofer/woodstick-jwt/zipball/cba8caadb21f32df1c3975a2a06b9adba582e0f7",
+                "reference": "cba8caadb21f32df1c3975a2a06b9adba582e0f7",
                 "shasum": ""
             },
             "require": {
@@ -36,10 +36,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/aschulhofer/woodstick-jwt/tree/0.0.2",
+                "source": "https://github.com/aschulhofer/woodstick-jwt/tree/0.0.3",
                 "issues": "https://github.com/aschulhofer/woodstick-jwt/issues"
             },
-            "time": "2017-04-14T10:01:11+00:00"
+            "time": "2017-04-16T17:46:20+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -2364,12 +2364,12 @@
             "version": "0.9.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
                 "shasum": ""
             },

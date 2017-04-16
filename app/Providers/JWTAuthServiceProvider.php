@@ -13,6 +13,20 @@ use Woodstick\JWT\JWTLib;
 
 class JWTAuthServiceProvider extends ServiceProvider
 {
+    protected $configName = 'axt-jwt';
+    
+    /**
+     * Get config values
+     *
+     * @param  string  $key
+     * @param  string  $default
+     *
+     * @return mixed
+     */
+    protected function getConfig($key, $default = null) {
+        return app('config')->get("$this->configName.$key", $default);
+    }
+    
     /**
      * Register any application services.
      *
@@ -20,8 +34,21 @@ class JWTAuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Load configuration
+        $this->app->configure($this->configName);
+        
+        $this->app->alias('app.jwt.library', JWTLib::Class);
+        $this->app->alias('app.jwt.token.source', TokenSource::Class);
+        $this->app->alias('app.jwt.token.provider', TokenProvider::Class);
+        $this->app->alias('app.jwt.token.storage', TokenStorage::Class);
+        $this->app->alias('app.jwt.service', JWTAuth::Class);
+        
         $this->app->singleton('app.jwt.library', function ($app) {
-            return new JWTLib();
+            return new JWTLib(
+                $this->getConfig('secret'),
+                $this->getConfig('signature'),
+                $this->getConfig('algo')
+            );
         });
         
         $this->app->singleton('app.jwt.token.source', function ($app) {
